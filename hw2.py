@@ -75,8 +75,6 @@ def main():
     # print(f"Hello {name}")
     
     
-    
-    
     # Print the menu
     print(menu())
     
@@ -85,50 +83,60 @@ def main():
     print("You chose:", user_input)
     print()
 
-
-    if user_input == 1:
-        # Ask user to enter rows and columns
-        rows = int(input("Enter number of rows: "))
-        columns = int(input("Enter number of columns: "))
+    while user_input != 7:
+        
+        # Print the menu
+        print(menu())
+        
+        # Ask user to choose a number from the menu
+        user_input = int(input("Please choose a number from the above menu: "))
+        print("You chose:", user_input)
+        print()
+        
+        
+        if user_input == 1:
+            # Ask user to enter rows and columns
+            rows = int(input("Enter number of rows: "))
+            columns = int(input("Enter number of columns: "))
        
-        mat1 = createMat1(rows, columns)
-        mat2 = createMat2(rows, columns)
-        mat3 = []
+            mat1 = createMat1(rows, columns)
+            mat2 = createMat2(rows, columns)
+            mat3 = []
         
-        for i in range(rows):
-            # initialize each row of mat3 in order to assign values in the 2nd for loop
-            mat3.append([0] * columns)
-            for j in range(columns):
-                mat3[i][j] = mat1[i][j] + mat2[i][j]
+            for i in range(rows):
+                # initialize each row of mat3 in order to assign values in the 2nd for loop
+                mat3.append([0] * columns)
+                for j in range(columns):
+                    mat3[i][j] = mat1[i][j] + mat2[i][j]
  
-        print(mat3)
+            print(mat3)
         
-    elif user_input == 2:
-        # Ask user to enter rows and columns of matrix 1
-        rows1 = int(input("Enter number of rows of matrix 1: "))
-        columns1 = int(input("Enter number of columns of matrix 1: "))
+        elif user_input == 2:
+            # Ask user to enter rows and columns of matrix 1
+            rows1 = int(input("Enter number of rows of matrix 1: "))
+            columns1 = int(input("Enter number of columns of matrix 1: "))
         
-        # Ask user to enter rows and columns of matrix 2
-        rows2 = int(input("Enter number of rows of matrix 2: "))
-        columns2 = int(input("Enter number of columnsof matrix 2: "))
-           
-        mat1 = createMat1(rows1, columns1)
-        mat2 = createMat2(rows2, columns2)
-
-        #returns True if one is the rotation of the other.
-        print(isRotation(mat1, mat2))
-
-    elif user_input == 3:
-        dictionary = {}
-        dict_size = int(input("Enter The Number Dictionary Keys: "))
-        
-        # Create dictionary and add values to it
-        for i in range(dict_size):        # O(N)
-            key = input("Input Key: ")
-            value = input("Input Values: ")
-            dictionary[key] = value
+            # Ask user to enter rows and columns of matrix 2
+            rows2 = int(input("Enter number of rows of matrix 2: "))
+            columns2 = int(input("Enter number of columnsof matrix 2: "))
             
-        new_dict = {}
+            mat1 = createMat1(rows1, columns1)
+            mat2 = createMat2(rows2, columns2)
+            
+            #returns True if one is the rotation of the other.
+            print(isRotation(mat1, mat2))
+
+        elif user_input == 3:
+            dictionary = {}
+            dict_size = int(input("Enter The Number Dictionary Keys: "))
+        
+            # Create dictionary and add values to it
+            for i in range(dict_size):        # O(N)
+                key = input("Input Key: ")
+                value = input("Input Values: ")
+                dictionary[key] = value
+            
+            new_dict = {}
         
         for key, value in dictionary.items():     # O(N)        
             # Check if value is in the new dictionary to avoid having duplicate keys which returns an error
@@ -156,9 +164,6 @@ def main():
         
         # Uses the selection sort algorithm function to sort the list
         print(selectionSort(lst, nb))
-        
-    # elif user_input == 7:
-    #     break
 
     else:
         print("Wrong Input... Please try again.")
