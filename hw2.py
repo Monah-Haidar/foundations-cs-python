@@ -138,35 +138,36 @@ def main():
             
             new_dict = {}
         
-        for key, value in dictionary.items():     # O(N)        
-            # Check if value is in the new dictionary to avoid having duplicate keys which returns an error
-            if value not in new_dict:
-                new_dict[value] = [key]
-            else:
-                # Value is a duplicate so we are appending the key which it corresponds to, to the new key
-                new_dict[value].append(key)
+            for key, value in dictionary.items():     # O(N)        
+                # Check if value is in the new dictionary to avoid having duplicate keys which returns an error
+                if value not in new_dict:
+                    new_dict[value] = [key]
+                else:
+                    # Value is a duplicate so we are appending the key which it corresponds to, to the new key
+                    new_dict[value].append(key)
                 
-        print("New Dict is: ")
-        print(new_dict)
+                    print("New Dict is: ")
+                    print(new_dict)
         
-    elif user_input == 5:
-        s = input("Please enter a word: ")
-        print(isPalindrome(s))
+        elif user_input == 5:
+            s = input("Please enter a word: ")
+            print(isPalindrome(s))
 
-    elif user_input == 6:
-        lst = [4,6,2,9,8,5,1,1,3,9,3,3]
-        nb = int(input("Enter a number to search for in the list: "))
-        
-        # Search for the nb
-        for i in range(len(lst)):
-            if lst[i] == nb:
-                print(f"{nb} is found on index {i}")
-        
-        # Uses the selection sort algorithm function to sort the list
-        print(selectionSort(lst, nb))
 
-    else:
-        print("Wrong Input... Please try again.")
+        elif user_input == 6:
+            lst = [4,6,2,9,8,5,1,1,3,9,3,3]
+            nb = int(input("Enter a number to search for in the list: "))
+        
+            # Search for the nb
+            for i in range(len(lst)):
+                if lst[i] == nb:
+                    print(f"{nb} is found on index {i}")
+        
+            # Uses the selection sort algorithm function to sort the list
+            print(selectionSort(lst, nb))
+
+        else:
+            print("Wrong Input... Please try again.")
 
 
 
