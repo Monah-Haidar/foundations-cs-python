@@ -47,6 +47,13 @@ def isRotation(mat1, mat2):
                                           # = O(N^2)
     
    
+def isPalindrome(s):
+    if len(s) <= 1:
+        return True
+    elif s[0] == s[-1]:
+        return isPalindrome(s[1:-1])
+    else:
+        return False
     
     
 
@@ -63,7 +70,7 @@ def main():
     # print("You chose:", user_input)
     # print()
 
-    user_input = 3
+    user_input = 5
 
     if user_input == 1:
         # Ask user to enter rows and columns
@@ -107,8 +114,6 @@ def main():
             value = input("Input Values: ")
             dictionary[key] = value
             
-
-        
         new_dict = {}
         
         for key, value in dictionary.items():     # O(N)        
@@ -121,6 +126,11 @@ def main():
                 
         print("New Dict is: ")
         print(new_dict)
+        
+    elif user_input == 5:
+        s = input("Please enter a word: ")
+        
+        print(isPalindrome(s))
 
 
 
