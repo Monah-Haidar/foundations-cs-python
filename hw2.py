@@ -85,15 +85,6 @@ def main():
 
     while user_input != 7:
         
-        # Print the menu
-        print(menu())
-        
-        # Ask user to choose a number from the menu
-        user_input = int(input("Please choose a number from the above menu: "))
-        print("You chose:", user_input)
-        print()
-        
-        
         if user_input == 1:
             # Ask user to enter rows and columns
             rows = int(input("Enter number of rows: "))
@@ -170,35 +161,14 @@ def main():
             print("Wrong Input... Please try again.")
 
 
+        # Print the menu
+        print(menu())
+        
+        # Ask user to choose a number from the menu
+        user_input = int(input("Please choose a number from the above menu: "))
+        print("You chose:", user_input)
+        print()    
+        
 
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
