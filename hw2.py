@@ -51,19 +51,19 @@ def isRotation(mat1, mat2):
     
 
 def main():
-    # Ask the user for their name and welcome them
-    name = input("Please Enter Your Name: ")
-    print(f"Hello {name}")
+    # # Ask the user for their name and welcome them
+    # name = input("Please Enter Your Name: ")
+    # print(f"Hello {name}")
     
-    # Print the menu
-    print(menu())
+    # # Print the menu
+    # print(menu())
     
-    # Ask user to choose a number from the menu
-    user_input = int(input("Please choose a number from the above menu: "))
-    print("You chose:", user_input)
-    print()
+    # # Ask user to choose a number from the menu
+    # user_input = int(input("Please choose a number from the above menu: "))
+    # print("You chose:", user_input)
+    # print()
 
-    # user_input = 2
+    user_input = 3
 
     if user_input == 1:
         # Ask user to enter rows and columns
@@ -97,9 +97,17 @@ def main():
         #returns True if one is the rotation of the other.
         print(isRotation(mat1, mat2))
 
-
-
-
+    elif user_input == 3:
+        dictionary = {}
+        dict_size = int(input("Enter The Number Dictionary Keys: "))
+        
+        # Create dictionary and add values to it
+        for i in range(dict_size):        # O(N)
+            key = input("Input Key: ")
+            value = input("Input Values: ")
+            dictionary[key] = value
+            
+        print(dictionary)
 
 
 
@@ -109,3 +117,32 @@ def main():
 
 
 main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
