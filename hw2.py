@@ -74,15 +74,17 @@ def main():
     # name = input("Please Enter Your Name: ")
     # print(f"Hello {name}")
     
-    # # Print the menu
-    # print(menu())
     
-    # # Ask user to choose a number from the menu
-    # user_input = int(input("Please choose a number from the above menu: "))
-    # print("You chose:", user_input)
-    # print()
+    
+    
+    # Print the menu
+    print(menu())
+    
+    # Ask user to choose a number from the menu
+    user_input = int(input("Please choose a number from the above menu: "))
+    print("You chose:", user_input)
+    print()
 
-    user_input = 6
 
     if user_input == 1:
         # Ask user to enter rows and columns
@@ -155,7 +157,13 @@ def main():
         # Uses the selection sort algorithm function to sort the list
         print(selectionSort(lst, nb))
         
-                    
+    # elif user_input == 7:
+    #     break
+
+    else:
+        print("Wrong Input... Please try again.")
+
+
 
 
 main()
