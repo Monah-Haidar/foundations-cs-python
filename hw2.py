@@ -37,6 +37,16 @@ def createMat2(rows, columns):       # O(N^2)
     return mat2
     
     
+# Function to check if two matrices are a rotation of one another
+def isRotation(mat1, mat2):
+    for i in range(len(mat1)):             # O(N)
+        for j in range(len(mat1)):         # O(N)
+            if mat1[i][j] != mat2[j][i]:   # O(1)
+                return False
+    return True
+                                          # = O(N^2)
+    
+   
     
     
 
@@ -49,10 +59,12 @@ def main():
     print(menu())
     
     # Ask user to choose a number from the menu
-    user_input = input("Please choose a number from the above menu: ")
+    user_input = int(input("Please choose a number from the above menu: "))
     print("You chose:", user_input)
+    print()
 
-    
+    # user_input = 2
+
     if user_input == 1:
         # Ask user to enter rows and columns
         rows = int(input("Enter number of rows: "))
@@ -69,10 +81,21 @@ def main():
                 mat3[i][j] = mat1[i][j] + mat2[i][j]
  
         print(mat3)
+        
+    elif user_input == 2:
+        # Ask user to enter rows and columns of matrix 1
+        rows1 = int(input("Enter number of rows of matrix 1: "))
+        columns1 = int(input("Enter number of columns of matrix 1: "))
+        
+        # Ask user to enter rows and columns of matrix 2
+        rows2 = int(input("Enter number of rows of matrix 2: "))
+        columns2 = int(input("Enter number of columnsof matrix 2: "))
+           
+        mat1 = createMat1(rows1, columns1)
+        mat2 = createMat2(rows2, columns2)
 
-
-
-
+        #returns True if one is the rotation of the other.
+        print(isRotation(mat1, mat2))
 
 
 
