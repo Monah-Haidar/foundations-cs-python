@@ -107,9 +107,20 @@ def main():
             value = input("Input Values: ")
             dictionary[key] = value
             
-        print(dictionary)
 
-
+        
+        new_dict = {}
+        
+        for key, value in dictionary.items():     # O(N)        
+            # Check if value is in the new dictionary to avoid having duplicate keys which returns an error
+            if value not in new_dict:
+                new_dict[value] = [key]
+            else:
+                # Value is a duplicate so we are appending the key which it corresponds to, to the new key
+                new_dict[value].append(key)
+                
+        print("New Dict is: ")
+        print(new_dict)
 
 
 
