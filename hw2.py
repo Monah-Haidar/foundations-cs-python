@@ -146,7 +146,9 @@ def main():
         lst = [4,6,2,9,8,5,1,1,3,9,3,3]
         nb= int(input("Enter a number to search for in the list: "))
         
-       
+        for i in range(len(lst)):
+            if lst[i] == nb:
+                print(f"{nb} is found on index {i}")
                 
         print(selectionSort(lst, nb))
         
