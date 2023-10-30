@@ -140,6 +140,18 @@ def main():
                     print("New Dict is: ")
                     print(new_dict)
         
+        elif user_input == 4:
+            user_profiles = []
+            nb_of_users = int(input("Enter the nb of users to their profiles: "))
+            
+            for row in range(nb_of_users):
+                first_name = eval(input("Enter user first name: "))
+                last_name = eval(input("Enter user last name: "))
+                user_id = eval(input("Enter user_id: "))
+                company = eval(input("Enter company name: "))
+        
+        
+        
         elif user_input == 5:
             s = input("Please enter a word: ")
             print(isPalindrome(s))
