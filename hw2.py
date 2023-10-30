@@ -47,7 +47,7 @@ def isRotation(mat1, mat2):
                                           # = O(N^2)
     
 # Check if string is a palindrome
-def isPalindrome(s):         #O(N)
+def isPalindrome(s):                      #O(N)
     if len(s) <= 1:
         return True
     elif s[0] == s[-1]:
@@ -55,9 +55,10 @@ def isPalindrome(s):         #O(N)
     else:
         return False
     
-    
-def selectionSort(lst, n):
-    for x in range(len(lst - 1)):
+
+# Function that utilizes the selection sort algorithm
+def selectionSort(lst, n):             #O(N^2)       
+    for x in range(len(lst) - 1):
         # we subtract -1 so that we do not compare the last nb to itself
         for y in range(x + 1, len(lst)):
             if lst[x] > lst[y]:
@@ -144,12 +145,14 @@ def main():
 
     elif user_input == 6:
         lst = [4,6,2,9,8,5,1,1,3,9,3,3]
-        nb= int(input("Enter a number to search for in the list: "))
+        nb = int(input("Enter a number to search for in the list: "))
         
+        # Search for the nb
         for i in range(len(lst)):
             if lst[i] == nb:
                 print(f"{nb} is found on index {i}")
-                
+        
+        # Uses the selection sort algorithm function to sort the list
         print(selectionSort(lst, nb))
         
                     
