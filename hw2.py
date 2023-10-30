@@ -46,8 +46,8 @@ def isRotation(mat1, mat2):
     return True
                                           # = O(N^2)
     
-   
-def isPalindrome(s):
+# Check if string is a palindrome
+def isPalindrome(s):         #O(N)
     if len(s) <= 1:
         return True
     elif s[0] == s[-1]:
@@ -56,6 +56,17 @@ def isPalindrome(s):
         return False
     
     
+def selectionSort(lst, n):
+    for x in range(len(lst - 1)):
+        # we subtract -1 so that we do not compare the last nb to itself
+        for y in range(x + 1, len(lst)):
+            if lst[x] > lst[y]:
+                # switch the values of x and y to eachother ex: x = 2, y = 3 -> x = 3, y = 2
+                lst[x], lst[y] = lst[y], lst[x]
+    return lst
+
+
+
 
 def main():
     # # Ask the user for their name and welcome them
@@ -70,7 +81,7 @@ def main():
     # print("You chose:", user_input)
     # print()
 
-    user_input = 5
+    user_input = 6
 
     if user_input == 1:
         # Ask user to enter rows and columns
@@ -129,12 +140,17 @@ def main():
         
     elif user_input == 5:
         s = input("Please enter a word: ")
-        
         print(isPalindrome(s))
 
-
-
-
+    elif user_input == 6:
+        lst = [4,6,2,9,8,5,1,1,3,9,3,3]
+        nb= int(input("Enter a number to search for in the list: "))
+        
+       
+                
+        print(selectionSort(lst, nb))
+        
+                    
 
 
 main()
