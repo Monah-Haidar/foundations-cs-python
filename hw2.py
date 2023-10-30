@@ -141,16 +141,19 @@ def main():
                     print(new_dict)
         
         elif user_input == 4:
-            user_profiles = []
-            nb_of_users = int(input("Enter the nb of users to their profiles: "))
-            
-            for row in range(nb_of_users):
-                first_name = eval(input("Enter user first name: "))
-                last_name = eval(input("Enter user last name: "))
-                user_id = eval(input("Enter user_id: "))
-                company = eval(input("Enter company name: "))
-        
-        
+            user_dict = {}
+            # Dummy matrix for test case
+            user_data = [["firstname1", "lastname1", "ID1", "jobtitle1", "company1"],
+                          ["firstname2", "lastname2", "ID2", "jobtitle2", "company2"],
+                          ["firstname3", "lastname3", "ID3", "jobtitle3", "company3"]]
+                
+            for user_info in user_data:
+               user_keys = user_info[2]                    # get only ids
+               user_values = user_info[:2] + user_info[3:]  # get info witout id
+               user_dict[user_keys] = user_values    # insert the gathered ids and values in a dictionary 
+         
+            print(user_dict)
+         
         
         elif user_input == 5:
             s = input("Please enter a word: ")
