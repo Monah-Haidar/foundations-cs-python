@@ -15,9 +15,11 @@ def displayMenu():
           9. Exit
           """)
 
-# Function to add a tab
+# Function to open a tab
+# A dictionary is used to represent each tab using the title and url provided considering the url as a key and the title as a value. 
+# The tab list is also provided as a parameter to append the opened tab.
 # Running Time: __
-def addTab(title, url, lst):
+def openTab(title, url, lst):
     tab_dict = {}
     tab_dict[url]= [title]
     lst.append(tab_dict)
@@ -36,9 +38,10 @@ def closeTab(index, lst):
 
     return lst
 
-
+# Function to close a tab
+# Running Time: __
 def displayTabContent(index, lst):
-    print()
+    
 
 
 
@@ -69,7 +72,8 @@ def main():
         if user_input == 1:
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
-            addTab(website_title, website_url, tab_list)
+            
+            openTab(website_title, website_url, tab_list)
             print(tab_list)
         
         elif user_input == 2:
