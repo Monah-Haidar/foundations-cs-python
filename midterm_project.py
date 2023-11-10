@@ -26,6 +26,20 @@ def addTab(title, url, lst):
     
     return lst
 
+# Function to close a tab
+# Running Time: __
+def closeTab(index, lst):
+    if index == "":
+        lst.pop()
+    else:
+        lst.pop(int(index))
+
+    return lst
+
+
+
+
+
 
 
 
@@ -54,13 +68,16 @@ def main():
         if user_input == 1:
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
-        
             addTab(website_title, website_url, tab_list)
-        
             print(tab_list)
         
-        
-        
+        elif user_input == 2:
+            tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+            while not (tab_index == "" or tab_index.isnumeric()):
+                tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+                
+            closeTab(tab_index, tab_list)
+            print(tab_list)
         
         
         
