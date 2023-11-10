@@ -44,11 +44,9 @@ def closeTab(index, tab_dict):
 
 
 
-    
-
 # Function to close a tab
 # Running Time: __
-def displayTabContent(index, lst):
+def displayTabContent(index, tab_dict):
     # Setting up Selenium for webscraping
     # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
     # Source: https://pythonbasics.org/selenium-get-html/
@@ -56,11 +54,19 @@ def displayTabContent(index, lst):
     import time
   
     
+    if not index:
+        print()
+    else:
+        for key,value in tab_dict.items():
+            if key == index:
+                url = tab_dict[key][0]
+  
+    
     # Start a session
     driver = webdriver.Chrome()
     
     # Navigate to a webpage using the .get() method
-    driver.get("https://www.selenium.dev/selenium/web/web-form.html")
+    driver.get(url)
 
     # Requesting the HTML source code of the website
     html = driver.page_source
@@ -74,9 +80,17 @@ def displayTabContent(index, lst):
     # End session
     driver.quit()
 
+    # Requesting the HTML source code of the website
+    html = driver.page_source
+    
+    # Wait for the website to load
+    time.sleep(2)
+    
+    # Print html source code
+    print(html)
 
-
-
+    # End session
+    driver.quit()
 
 
 def main():
@@ -94,7 +108,7 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     
     # Dictionary to store tabs
-    tab_dict = {'sef': ['se.io'], 'net': ['netflix.com']}
+    tab_dict = {'sef': ['https://www.activestate.com/products/python/pip-tools/pip-install-environment/'], 'net': ['https://www.selenium.dev/documentation/webdriver/getting_started/first_script/']}
     
     while user_input != 9:
         
@@ -117,10 +131,7 @@ def main():
         
         elif user_input == 3:
             print(tab_dict)
-            tab_index = input("Please enter the index of the tab you wish to display it's content': ")
-            while not (tab_index == "" or tab_index.isnumeric()):
-                tab_index = input("Please enter the index of the tab you wish to display it's content': ")
-        
+            tab_index = input("Please enter the index of the tab you wish to display it's content: ")
             displayTabContent(tab_index, tab_dict)
 
         
