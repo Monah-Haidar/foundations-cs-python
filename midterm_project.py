@@ -1,5 +1,3 @@
-
-
 # Function to display the menu
 # Running Time: O(1)
 def displayMenu():
@@ -19,30 +17,52 @@ def displayMenu():
 # A dictionary is used to represent each tab using the title and url provided considering the url as a key and the title as a value. 
 # The tab list is also provided as a parameter to append the opened tab. 
 # Running Time: __
-def openTab(title, url, lst):
-    tab_dict = {}
-    tab_dict[url]= [title]
-    lst.append(tab_dict)
+def openTab(url, title, tab_dict):
+    tab_dict[title]= [url]
 
     print(f"Website title {title} and website url {url} have been added successfully!")
     
-    return lst
+    return tab_dict
 
 # Function to close a tab
+# The function takes the index provided by the user and the tab list as a parameter. 
+# The funciton checks if the user provided an empty string or a valid index and closes the tab.
 # Running Time: __
-def closeTab(index, lst):
+def closeTab(index, tab_dict):
     if index == "":
-        lst.pop()
+        tab_dict.popitem()
     else:
-        lst.pop(int(index))
+        del tab_dict[index]
 
-    return lst
+    return tab_dict
 
 # Function to close a tab
 # Running Time: __
 def displayTabContent(index, lst):
+    # Setting up Selenium for webscraping
+    # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
+    # Source: https://pythonbasics.org/selenium-get-html/
+    from selenium import webdriver
+    import time
+  
     
+    # Start a session
+    driver = webdriver.Chrome()
+    
+    # Navigate to a webpage using the .get() method
+    driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
+    # Requesting the HTML source code of the website
+    html = driver.page_source
+    
+    # Wait for the website to load
+    time.sleep(2)
+    
+    # Print html source code
+    print(html)
+
+    # End session
+    driver.quit()
 
 
 
@@ -65,7 +85,7 @@ def main():
     print(f"\nYou chose {user_input}\n")
     
     # List to maintain to order of tabs
-    tab_list = []
+    tab_dict = {}
     
     while user_input != 9:
         
@@ -73,26 +93,26 @@ def main():
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
-            openTab(website_title, website_url, tab_list)
-            print(tab_list)
+            openTab(website_url, website_title, tab_dict)
+            print(tab_dict)
         
         elif user_input == 2:
-            print(tab_list)
+            print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
             while not (tab_index == "" or tab_index.isnumeric()):
                 tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
                 
-            closeTab(tab_index, tab_list)
-            print(tab_list)
+            closeTab(tab_index, tab_dict)
+            print(tab_dict)
         
         elif user_input == 3:
-            print(tab_list)
+            print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to display it's content': ")
             while not (tab_index == "" or tab_index.isnumeric()):
                 tab_index = input("Please enter the index of the tab you wish to display it's content': ")
         
-            displayTabContent(tab_index, tab_list)
-            print(tab_list)
+            displayTabContent(tab_index, tab_dict)
+            print(tab_dict)
         
         
         
