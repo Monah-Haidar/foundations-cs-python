@@ -37,7 +37,8 @@ def closeTab(index, lst):
     return lst
 
 
-
+def displayTabContent(index, lst):
+    print()
 
 
 
@@ -72,6 +73,7 @@ def main():
             print(tab_list)
         
         elif user_input == 2:
+            print(tab_list)
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
             while not (tab_index == "" or tab_index.isnumeric()):
                 tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
@@ -79,11 +81,14 @@ def main():
             closeTab(tab_index, tab_list)
             print(tab_list)
         
+        elif user_input == 3:
+            print(tab_list)
+            tab_index = input("Please enter the index of the tab you wish to display it's content': ")
+            while not (tab_index == "" or tab_index.isnumeric()):
+                tab_index = input("Please enter the index of the tab you wish to display it's content': ")
         
-        
-        
-        
-        
+            displayTabContent(tab_index, tab_list)
+            print(tab_list)
         
         
         
