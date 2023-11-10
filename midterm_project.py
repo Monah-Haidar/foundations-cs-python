@@ -97,7 +97,10 @@ def displayTabContent(index, tab_dict):
 
 
 
-
+def printAllTabs(tab_dict):
+    print("Open tab titles are: ")
+    for key,value in tab_dict.items():
+        print(key)
 
 
 
@@ -145,8 +148,12 @@ def main():
             displayTabContent(tab_index, tab_dict)
             
         elif user_input == 4:
-            print()
-
+            
+            printAllTabs(tab_dict)
+        
+        
+        
+        
         
         
         
