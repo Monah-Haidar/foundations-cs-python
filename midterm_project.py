@@ -18,8 +18,6 @@ def displayMenu():
 # Running Time: __
 def openTab(url, title, tab_dict):
     tab_dict[title]= [url]
-
-    print(f"Website title {title} and website url {url} have been added successfully!")
     
     return tab_dict
 
@@ -34,6 +32,9 @@ def closeTab(index, tab_dict):
         del tab_dict[index]
 
     return tab_dict
+
+
+    
 
 # Function to close a tab
 # Running Time: __
@@ -81,10 +82,9 @@ def main():
     # Take user choice 
     # Running Time: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
-    print(f"\nYou chose {user_input}\n")
     
     # Dictionary to store tabs
-    tab_dict = {}
+    tab_dict = {'sef': ['se.io'], 'net': ['netflix.com']}
     
     while user_input != 9:
         
@@ -96,13 +96,25 @@ def main():
             print(tab_dict)
         
         elif user_input == 2:
+            print()
             print(tab_dict)
+            print()
+            
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
-            while not (tab_index == "" or tab_index.isnumeric()):
-                tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
-                
-            closeTab(tab_index, tab_dict)
+            
+            # Making a copy of dicitionary
+            copy_of_tab_dict = tab_dict.copy()
+
+            for key,value in copy_of_tab_dict.items():
+                if key == tab_index:
+                    closeTab(tab_index, tab_dict)   
+                    
+            print("Index is invalid. Please try again...\n")
+            
             print(tab_dict)
+            print()
+            
+            
         
         elif user_input == 3:
             print(tab_dict)
@@ -111,14 +123,12 @@ def main():
                 tab_index = input("Please enter the index of the tab you wish to display it's content': ")
         
             displayTabContent(tab_index, tab_dict)
-            print(tab_dict)
-        
+
         
         
         
         displayMenu()
         user_input = int(input("Please choose a number from the menu above: "))
-        print(f"\nYou chose {user_input}\n")
         
         
         
