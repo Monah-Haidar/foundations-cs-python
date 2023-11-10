@@ -14,8 +14,7 @@ def displayMenu():
           """)
 
 # Function to open a tab
-# A dictionary is used to represent each tab using the title and url provided considering the url as a key and the title as a value. 
-# The tab list is also provided as a parameter to append the opened tab. 
+# A dictionary is used to represent each tab using the title and url provided considering the title as a key and the url as a value. 
 # Running Time: __
 def openTab(url, title, tab_dict):
     tab_dict[title]= [url]
@@ -25,7 +24,7 @@ def openTab(url, title, tab_dict):
     return tab_dict
 
 # Function to close a tab
-# The function takes the index provided by the user and the tab list as a parameter. 
+# The function takes the index provided by the user and the tab dictionary as a parameter. 
 # The funciton checks if the user provided an empty string or a valid index and closes the tab.
 # Running Time: __
 def closeTab(index, tab_dict):
@@ -84,7 +83,7 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     print(f"\nYou chose {user_input}\n")
     
-    # List to maintain to order of tabs
+    # Dictionary to store tabs
     tab_dict = {}
     
     while user_input != 9:
