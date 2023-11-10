@@ -55,7 +55,12 @@ def displayTabContent(index, tab_dict):
   
     
     if not index:
-        print()
+        # Source:https://stackoverflow.com/questions/2212433/counting-the-number-of-distinct-keys-in-a-dictionary-in-python
+        # list(____.keys()) returns the dictionary keys in a list. That way i can access the last key in the dictionary and display its content
+        key_lst = list(tab_dict.keys())
+        elem = key_lst[-1]
+        url = tab_dict[elem][0]
+        print(url)
     else:
         for key,value in tab_dict.items():
             if key == index:
