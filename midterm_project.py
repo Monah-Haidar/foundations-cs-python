@@ -17,7 +17,7 @@ def displayMenu():
 
 # Function to open a tab
 # A dictionary is used to represent each tab using the title and url provided considering the url as a key and the title as a value. 
-# The tab list is also provided as a parameter to append the opened tab.
+# The tab list is also provided as a parameter to append the opened tab. 
 # Running Time: __
 def openTab(title, url, lst):
     tab_dict = {}
