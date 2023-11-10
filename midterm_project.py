@@ -15,6 +15,14 @@ def displayMenu():
           9. Exit
           """)
 
+# Function to add a tab
+# Running Time: __
+def addTab(title, url):
+    tab_dict = {}
+    tab_dict[url]= [title]
+
+    print(f"Website title {title} and website url {url} have been added successfully!")
+
 
 
 
@@ -23,19 +31,47 @@ def displayMenu():
 
 def main():
     # Prompt the user to enter their name and greet them
+    # Running Time: O(1)
     user_name = input("Enter your name: ")
     print(f"Welcome to our Advanced Browser {user_name}")
     
     # Display Menu
+    # Running Time: O(1)
     displayMenu()
     
     # Take user choice 
+    # Running Time: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
     print(f"\nYou chose {user_input}")
     
     
-    
-    
+    if user_input == 1:
+        print()
+        website_title = input("Enter the website title: ")
+        website_url = input("Enter the website url: ")
+        
+        addTab(website_title, website_url)
     
     
 main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
