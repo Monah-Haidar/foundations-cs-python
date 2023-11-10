@@ -26,12 +26,22 @@ def openTab(url, title, tab_dict):
 # The funciton checks if the user provided an empty string or a valid index and closes the tab.
 # Running Time: __
 def closeTab(index, tab_dict):
-    if index == "":
+    # string is empty
+    if not index:
         tab_dict.popitem()
     else:
-        del tab_dict[index]
+        # Making a copy of dicitionary
+        copy_of_tab_dict = tab_dict.copy()
 
+        # Iterating over the copy and deleting from the original dictionary
+        # We do that because it gives a runtime error when deleting from a dictionary while also iterating over it
+        for key,value in copy_of_tab_dict.items():
+            if key == index:
+                del tab_dict[index]
+    
     return tab_dict
+            
+
 
 
     
@@ -92,27 +102,16 @@ def main():
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
-            openTab(website_url, website_title, tab_dict)
-            print(tab_dict)
+            print(openTab(website_url, website_title, tab_dict))
         
         elif user_input == 2:
-            print()
             print(tab_dict)
-            print()
-            
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+            print(closeTab(tab_index, tab_dict))
             
-            # Making a copy of dicitionary
-            copy_of_tab_dict = tab_dict.copy()
+    
+            
 
-            for key,value in copy_of_tab_dict.items():
-                if key == tab_index:
-                    closeTab(tab_index, tab_dict)   
-                    
-            print("Index is invalid. Please try again...\n")
-            
-            print(tab_dict)
-            print()
             
             
         
