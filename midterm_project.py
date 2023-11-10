@@ -17,7 +17,7 @@ def displayMenu():
 # A dictionary is used to represent each tab using the title and url provided considering the title as a key and the url as a value. 
 # Running Time: __
 def openTab(url, title, tab_dict):
-    tab_dict[title]= [url]
+    tab_dict[title]= url
     
     return tab_dict
 
@@ -53,14 +53,12 @@ def displayTabContent(index, tab_dict):
     from selenium import webdriver
     import time
   
-    
     if not index:
         # Source:https://stackoverflow.com/questions/2212433/counting-the-number-of-distinct-keys-in-a-dictionary-in-python
         # list(____.keys()) returns the dictionary keys in a list. That way i can access the last key in the dictionary and display its content
         key_lst = list(tab_dict.keys())
         elem = key_lst[-1]
         url = tab_dict[elem][0]
-        print(url)
     else:
         for key,value in tab_dict.items():
             if key == index:
@@ -98,6 +96,17 @@ def displayTabContent(index, tab_dict):
     driver.quit()
 
 
+
+
+
+
+
+
+
+
+
+
+
 def main():
     # Prompt the user to enter their name and greet them
     # Running Time: O(1)
@@ -113,7 +122,7 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     
     # Dictionary to store tabs
-    tab_dict = {'sef': ['https://www.activestate.com/products/python/pip-tools/pip-install-environment/'], 'net': ['https://www.selenium.dev/documentation/webdriver/getting_started/first_script/']}
+    tab_dict = {'sef': 'https://www.activestate.com/products/python/pip-tools/pip-install-environment/', 'net': 'https://www.selenium.dev/documentation/webdriver/getting_started/first_script/'}
     
     while user_input != 9:
         
@@ -126,18 +135,17 @@ def main():
         elif user_input == 2:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+            
             print(closeTab(tab_index, tab_dict))
-            
-    
-            
-
-            
-            
         
         elif user_input == 3:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to display it's content: ")
+            
             displayTabContent(tab_index, tab_dict)
+            
+        elif user_input == 4:
+            print()
 
         
         
