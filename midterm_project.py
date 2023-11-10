@@ -17,12 +17,14 @@ def displayMenu():
 
 # Function to add a tab
 # Running Time: __
-def addTab(title, url):
+def addTab(title, url, lst):
     tab_dict = {}
     tab_dict[url]= [title]
+    lst.append(tab_dict)
 
     print(f"Website title {title} and website url {url} have been added successfully!")
-
+    
+    return lst
 
 
 
@@ -42,17 +44,62 @@ def main():
     # Take user choice 
     # Running Time: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
-    print(f"\nYou chose {user_input}")
+    print(f"\nYou chose {user_input}\n")
     
+    # List to maintain to order of tabs
+    tab_list = []
     
-    if user_input == 1:
-        print()
-        website_title = input("Enter the website title: ")
-        website_url = input("Enter the website url: ")
+    while user_input != 9:
         
-        addTab(website_title, website_url)
-    
-    
+        if user_input == 1:
+            website_title = input("Enter the website title: ")
+            website_url = input("Enter the website url: ")
+        
+            addTab(website_title, website_url, tab_list)
+        
+            print(tab_list)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        displayMenu()
+        user_input = int(input("Please choose a number from the menu above: "))
+        print(f"\nYou chose {user_input}\n")
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 main()
 
 
