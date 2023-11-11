@@ -99,15 +99,15 @@ def displayTabContent(index, tab_dict):
 # Printing all titles in the dictionary using pre-order traversal 
 # Pre-order traversal is a type of tree traversal that prints the parent node before its children according to to depth
 # Running Time: __
-def printAllTabs(tab_dict):
+def printAllTabs(tab_dict, depth = 0):
     
-    for key, value in tab_dict.items(): # iterate over dictionary
+    for key, value in tab_dict.items():         # iterate over dictionary
 
-        if isinstance(value, dict):     # check if the value is another dictionary
-            print(key)
-            printAllTabs(value)         # if true, call the function recursively until you reach no nested dicitonaries
+        if isinstance(value, dict):             # check if the value is another dictionary
+            print("\t" * depth + key)           # if true, print the parent key with the respective indentation (hierarchy) according to the depth variable 
+            printAllTabs(value, depth + 1)      # call the function recursively until you reach no nested dicitonaries
         else:
-            print(f"\t{key}")             # Print the keys (titles) of the dictionaries (open tabs)
+            print("\t" * depth + key)           # Print the keys of the dictionaries according to their depth level
    
 
 
