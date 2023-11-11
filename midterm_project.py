@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 import json
-
+import os
 
 
 
@@ -158,8 +158,16 @@ def clearAllTabs(tab_dict):
 # Running Time: __ 
 def saveTabs(path, tab_dict):
     
-    with open(path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
-        json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
+    if path == "":
+        # Get current working directory
+        directory = os.getcwd()
+        new_path = f"{directory}\\savedOpenTabs.json"
+        with open(new_path, "w") as f:
+            json.dump(tab_dict, f)
+    else:
+        with open(path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
+            json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
+        
 
 
 
