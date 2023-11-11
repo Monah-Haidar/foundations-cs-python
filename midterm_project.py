@@ -159,7 +159,7 @@ def clearAllTabs(tab_dict):
 def saveTabs(path, tab_dict):
     
     with open(path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
-        json.dump(tab_dict, f)
+        json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
 
 
 
