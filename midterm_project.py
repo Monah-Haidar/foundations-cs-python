@@ -99,13 +99,13 @@ def displayTabContent(index, tab_dict):
 # Printing all titles in the dictionary using pre-order traversal 
 # Pre-order traversal is a type of tree traversal that prints the parent node before its children according to to depth
 # Running Time: __
-def printAllTabs(tab_dict, depth = 0):
+def displayAllTabs(tab_dict, depth = 0):
     
     for key, value in tab_dict.items():         # iterate over dictionary
 
         if isinstance(value, dict):             # check if the value is another dictionary
             print("\t" * depth + key)           # if true, print the parent key with the respective indentation (hierarchy) according to the depth variable 
-            printAllTabs(value, depth + 1)      # call the function recursively until you reach no nested dicitonaries
+            displayAllTabs(value, depth + 1)      # call the function recursively until you reach no nested dicitonaries
         else:
             print("\t" * depth + key)           # Print the keys of the dictionaries according to their depth level
    
@@ -128,27 +128,31 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     
     # Dictionary to store tabs
-    # tab_dict = {
-    #     'sef': 'https://www.activestate.com/',
-    #     'net': 'https://www.selenium.dev/documentation/',
-    #     }
-    
     tab_dict = {
-        "child4": "halawalla.com",
+        'sef': 'https://www.activestate.com/',
+        'net': 'https://www.selenium.dev/documentation/',
         "child1" : {
             "name" : "Emil",
             "year" : 2004
-            },
-        "child2" : {
-            "name" : "Tobias",
-            "year" : 2007
-            },
-        "child3" : {
-            "name" : "Linus",
-            "year" : 2011
             }
+        }
+    
+    # tab_dict = {
+    #     "child4": "halawalla.com",
+    #     "child1" : {
+    #         "name" : "Emil",
+    #         "year" : 2004
+    #         },
+    #     "child2" : {
+    #         "name" : "Tobias",
+    #         "year" : 2007
+    #         },
+    #     "child3" : {
+    #         "name" : "Linus",
+    #         "year" : 2011
+    #         }
         
-        } 
+    #     } 
     
     while user_input != 9:
         
@@ -171,10 +175,10 @@ def main():
             displayTabContent(tab_index, tab_dict)
             
         elif user_input == 4:
+            displayAllTabs(tab_dict)
+        
+        elif user_input == 5:
             
-            printAllTabs(tab_dict)
-        
-        
         
         
         
