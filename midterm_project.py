@@ -96,16 +96,19 @@ def displayTabContent(index, tab_dict):
     driver.quit()
 
 
-
+# Printing all titles in the dictionary using pre-order traversal 
+# Pre-order traversal is a type of tree traversal that prints the parent node before its children according to to depth
+# Running Time: __
 def printAllTabs(tab_dict):
-    print("Open tab titles are: ")
-    for key,value in tab_dict.items():
-        print(key)
+    
+    for key, value in tab_dict.items(): # iterate over dictionary
 
-
-
-
-
+        if isinstance(value, dict):     # check if the value is another dictionary
+            print(key)
+            printAllTabs(value)         # if true, call the function recursively until you reach no nested dicitonaries
+        else:
+            print(f"\t{key}")             # Print the keys (titles) of the dictionaries (open tabs)
+   
 
 
 
@@ -113,8 +116,8 @@ def printAllTabs(tab_dict):
 def main():
     # Prompt the user to enter their name and greet them
     # Running Time: O(1)
-    user_name = input("Enter your name: ")
-    print(f"Welcome to our Advanced Browser {user_name}")
+    # user_name = input("Enter your name: ")
+    # print(f"Welcome to our Advanced Browser {user_name}")
     
     # Display Menu
     # Running Time: O(1)
@@ -125,7 +128,27 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     
     # Dictionary to store tabs
-    tab_dict = {'sef': 'https://www.activestate.com/products/python/pip-tools/pip-install-environment/', 'net': 'https://www.selenium.dev/documentation/webdriver/getting_started/first_script/'}
+    # tab_dict = {
+    #     'sef': 'https://www.activestate.com/',
+    #     'net': 'https://www.selenium.dev/documentation/',
+    #     }
+    
+    tab_dict = {
+        "child4": "halawalla.com",
+        "child1" : {
+            "name" : "Emil",
+            "year" : 2004
+            },
+        "child2" : {
+            "name" : "Tobias",
+            "year" : 2007
+            },
+        "child3" : {
+            "name" : "Linus",
+            "year" : 2011
+            }
+        
+        } 
     
     while user_input != 9:
         
@@ -159,21 +182,6 @@ def main():
         
         displayMenu()
         user_input = int(input("Please choose a number from the menu above: "))
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
