@@ -1,3 +1,11 @@
+from selenium import webdriver
+import time
+import json
+
+
+
+
+
 # Function to display the menu
 # Running Time: O(1)
 def displayMenu():
@@ -50,8 +58,6 @@ def switchTab(index, tab_dict):
     # Setting up Selenium for webscraping
     # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
     # Source: https://pythonbasics.org/selenium-get-html/
-    from selenium import webdriver
-    import time
   
     if not index:
         # Source:https://stackoverflow.com/questions/2212433/counting-the-number-of-distinct-keys-in-a-dictionary-in-python
@@ -147,6 +153,23 @@ def clearAllTabs(tab_dict):
     return tab_dict
 
 
+# Function to save open tabs information
+# Json should be imported as shown above
+# Running Time: __ 
+def saveTabs(path, tab_dict):
+    
+    with open(path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
+        json.dump(tab_dict, f)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,23 +196,7 @@ def main():
             "url" : 2004
             }
         }
-    
-    # tab_dict = {
-    #     "child4": "halawalla.com",
-    #     "child1" : {
-    #         "name" : "Emil",
-    #         "year" : 2004
-    #         },
-    #     "child2" : {
-    #         "name" : "Tobias",
-    #         "year" : 2007
-    #         },
-    #     "child3" : {
-    #         "name" : "Linus",
-    #         "year" : 2011
-    #         }
-        
-    #     } 
+
     
     while user_input != 9:
         
@@ -225,7 +232,9 @@ def main():
         elif user_input == 6:
             print(clearAllTabs(tab_dict))
         
-        
+        elif user_input == 7:
+            file_path = input("Please enter a file path to save the current state of open tabs: ")
+            saveTabs(file_path, tab_dict)
         
         
         
