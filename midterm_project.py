@@ -111,11 +111,21 @@ def displayAllTabs(tab_dict, depth = 0):
    
 
 # This function enables users to create nested tab by choosing the index
+# We are looping to find the desired index and inserting a dictionary on that specific index
+# We added the 'parent_url' key in the newly added nested dictionary to not lose the url of the parent website
 # Running Time: __
-def openNestedTab(index, tab_dict):
-    print()
-    for key, value in tab_dict.items():
-        
+def openNestedTab(index, title, url, tab_dict):
+    
+    # Making a copy of dicitionary
+    copy_of_tab_dict = tab_dict.copy()
+    
+    for key, value in copy_of_tab_dict.items():
+        if key == index:
+            tab_dict[index] = {
+                "parent_url" : value,
+                "child_title" : title,
+                "child_url": url
+                }
 
 
 
@@ -140,9 +150,9 @@ def main():
     tab_dict = {
         'sef': 'https://www.activestate.com/',
         'net': 'https://www.selenium.dev/documentation/',
-        "child1" : {
-            "name" : "Emil",
-            "year" : 2004
+        "ama" : {
+            "title" : "Emil",
+            "url" : 2004
             }
         }
     
@@ -189,9 +199,10 @@ def main():
         elif user_input == 5:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to nest: ")
+            website_title = input("Enter the website title: ")
+            website_url = input("Enter the website url: ")
             
-            openNestedTab(tab_index, tab_dict)
-        
+            openNestedTab(tab_index, website_title, website_url, tab_dict)
         
         
         
