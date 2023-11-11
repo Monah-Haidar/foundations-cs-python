@@ -126,7 +126,25 @@ def openNestedTab(index, title, url, tab_dict):
                 "child_title" : title,
                 "child_url": url
                 }
+            
+    return tab_dict
 
+
+# Delete of dictionary fields recursively
+# Running Time: __
+def clearAllTabs(tab_dict):
+    
+    # Making a copy of dicitionary
+    copy_of_tab_dict = tab_dict.copy()
+    
+    for key, value in copy_of_tab_dict.items():
+        if isinstance(value, dict):
+            del tab_dict[key]
+            clearAllTabs(value)
+        else:
+            del tab_dict[key]
+
+    return tab_dict
 
 
 
@@ -203,6 +221,10 @@ def main():
             website_url = input("Enter the website url: ")
             
             openNestedTab(tab_index, website_title, website_url, tab_dict)
+        
+        elif user_input == 6:
+            print(clearAllTabs(tab_dict))
+        
         
         
         
