@@ -46,7 +46,7 @@ def closeTab(index, tab_dict):
 
 # Function to close a tab
 # Running Time: __
-def displayTabContent(index, tab_dict):
+def switchTab(index, tab_dict):
     # Setting up Selenium for webscraping
     # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
     # Source: https://pythonbasics.org/selenium-get-html/
@@ -96,7 +96,7 @@ def displayTabContent(index, tab_dict):
     driver.quit()
 
 
-# Printing all titles in the dictionary using pre-order traversal 
+# Displaying all titles in the dictionary using pre-order traversal 
 # Pre-order traversal is a type of tree traversal that prints the parent node before its children according to to depth
 # Running Time: __
 def displayAllTabs(tab_dict, depth = 0):
@@ -109,6 +109,15 @@ def displayAllTabs(tab_dict, depth = 0):
         else:
             print("\t" * depth + key)           # Print the keys of the dictionaries according to their depth level
    
+
+# This function enables users to create nested tab by choosing the index
+# Running Time: __
+def openNestedTab(index, tab_dict):
+    print()
+    for key, value in tab_dict.items():
+        
+
+
 
 
 
@@ -172,13 +181,16 @@ def main():
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to display it's content: ")
             
-            displayTabContent(tab_index, tab_dict)
+            switchTab(tab_index, tab_dict)
             
         elif user_input == 4:
             displayAllTabs(tab_dict)
         
         elif user_input == 5:
+            print(tab_dict)
+            tab_index = input("Please enter the index of the tab you wish to nest: ")
             
+            openNestedTab(tab_index, tab_dict)
         
         
         
