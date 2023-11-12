@@ -177,12 +177,12 @@ def importTabs(path, tab_dict):
     with open(path) as f:
         data = json.load(f)      # Load data from json file
 
-        print("Printing Dictionary: ")
+        print("Loading Dictionary: ")
         
         for key, value in data.items():         
                 tab_dict[key] = value     
         
-
+    return tab_dict
 
 
 
@@ -256,7 +256,7 @@ def main():
         elif user_input == 8:
             #file_path = input("Please enter a file path to load tabs: ")
             file_path = r"C:\Users\User\Desktop\Test\savedOpenTabs.json"
-            importTabs(file_path, tab_dict)
+            print(importTabs(file_path, tab_dict))
         
         elif user_input != 9:
             print("Your choice is invalid. Please try again")
