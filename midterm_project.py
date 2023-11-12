@@ -76,16 +76,16 @@ def switchTab(index, tab_dict):
     # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
     # Source: https://pythonbasics.org/selenium-get-html/
   
-    if not index:
+    if not index:       # index is empty string
         # Source:https://stackoverflow.com/questions/2212433/counting-the-number-of-distinct-keys-in-a-dictionary-in-python
         # list(____.keys()) returns the dictionary keys in a list. That way i can access the last key in the dictionary and display its content
         key_lst = list(tab_dict.keys())
         elem = key_lst[-1]
-        url = tab_dict[elem][0]
+        url = tab_dict[elem]
     else:
         for key,value in tab_dict.items():
             if key == index:
-                url = tab_dict[key][0]
+                url = tab_dict[key]
   
     
     # Start a session
@@ -101,7 +101,7 @@ def switchTab(index, tab_dict):
     time.sleep(2)
     
     # Print html source code
-    print(html)
+    print(html.encode('utf-8'))     # We use the .encode() method to display characters that aren't compatible with the default character encoding
 
     # End session
     driver.quit()
@@ -234,8 +234,14 @@ def main():
     
     
     # Dictionary to store tabs
-    tab_dict = {}
-
+    #tab_dict = {}
+    tab_dict = {
+        'sef': 'https://www.activestate.com/',
+        'go': 'https://www.google.com/',
+        "ama" : {
+            "goo" : "https://www.google.com/",
+            }
+        }
     
     while user_input != 9:
         
