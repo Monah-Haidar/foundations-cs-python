@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 import json
 import os
+import validators
 
 
 
@@ -129,8 +130,7 @@ def openNestedTab(index, title, url, tab_dict):
         if key == index:
             tab_dict[index] = {
                 "parent_url" : value,
-                "child_title" : title,
-                "child_url": url
+                title : url,
                 }
             
     return tab_dict
@@ -209,8 +209,7 @@ def main():
         'sef': 'https://www.activestate.com/',
         'net': 'https://www.selenium.dev/documentation/',
         "ama" : {
-            "title" : "Emil",
-            "url" : 2004
+            "Emil" : "2004",
             }
         }
 
@@ -221,7 +220,13 @@ def main():
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
+            while not ((validators.url(website_url) == True) and (website_title.isalpha())):
+                print("Please enter website title or url correctly")
+                website_title = input("Enter the website title: ")
+                website_url = input("Enter the website url: ")
+            
             print(openTab(website_url, website_title, tab_dict))
+            
         
         elif user_input == 2:
             print(tab_dict)
