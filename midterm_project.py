@@ -10,7 +10,7 @@ import validators
 
 
 # Function to display the menu
-# Running Time: O(1)
+# Time Complexity of whole function: O(1)
 def displayMenu():
     print("""
           1. Open Tab
@@ -26,41 +26,41 @@ def displayMenu():
 
 # Function to open a tab
 # A dictionary is used to represent each tab using the title and url provided considering the title as a key and the url as a value. 
-# Running Time: __
+# Time Complexity of whole function: O(1)
 def openTab(url, title, tab_dict):
     
     # Validate user input
-    while not ((validators.url(url) == True) and (title.isalpha())):
+    while not ((validators.url(url) == True) and (title.isalpha())):   # O(1)
         print("Please enter website title or url correctly")
         title = input("Enter the website title: ")
         url = input("Enter the website url: ")
     
-    tab_dict[title]= url
+    tab_dict[title]= url   # O(1)
     
     return tab_dict
 
 # Function to close a tab
 # The function takes the index provided by the user and the tab dictionary as a parameter. 
 # The funciton checks if the user provided an empty string or a valid index and closes the tab.
-# Running Time: __
+# Time Complexity of whole function: O(N)
 def closeTab(index, tab_dict):
 
     # Validate user input
-    while not ((index.isalpha()) or (index == "")):
+    while not ((index.isalpha()) or (index == "")):     # O(1)
         print("Please enter characters or leave it empty to close the last tab")
         index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
     
-    
+    # Time complexity for the 2 conditional statements above is O(N)
     # string is empty
     if not index:
-        tab_dict.popitem()
+        tab_dict.popitem()      # O(1)
     else:
         # Making a copy of dicitionary
         copy_of_tab_dict = tab_dict.copy()
 
         # Iterating over the copy and deleting from the original dictionary
         # We do that because it gives a runtime error when deleting from a dictionary while also iterating over it
-        for key,value in copy_of_tab_dict.items():
+        for key,value in copy_of_tab_dict.items():      # O(N)   since we are iterating over N elements in the dictionary
             if key == index:
                 del tab_dict[index]
     
@@ -70,20 +70,20 @@ def closeTab(index, tab_dict):
 
 
 # Function to display the content of a tab
-# Running Time: __
+# Time Complexity of whole function: O(N)  - Time mainly depends on the number of times we are iterating over the dictionary
 def switchTab(index, tab_dict):
     # Setting up Selenium for webscraping
     # Source: https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
     # Source: https://pythonbasics.org/selenium-get-html/
   
-    if not index:       # index is empty string
+    if not index:      # O(1)     # index is empty string
         # Source:https://stackoverflow.com/questions/2212433/counting-the-number-of-distinct-keys-in-a-dictionary-in-python
         # list(____.keys()) returns the dictionary keys in a list. That way i can access the last key in the dictionary and display its content
         key_lst = list(tab_dict.keys())
         elem = key_lst[-1]
         url = tab_dict[elem]
     else:
-        for key,value in tab_dict.items():
+        for key,value in tab_dict.items():    # O(N)
             if key == index:
                 url = tab_dict[key]
   
@@ -109,36 +109,38 @@ def switchTab(index, tab_dict):
 
 # Displaying all titles in the dictionary using depth-order traversal 
 # depth-order traversal is a type of tree traversal that prints the parent node before its children according to depth
-# Running Time: __
+# Time Complexity of whole function: O(N)  - Time mainly depends on the number of times we are iterating over the dictionary
 def displayAllTabs(tab_dict, depth = 0):
     
-    for key, value in tab_dict.items():         # iterate over dictionary
-        if isinstance(value, dict):             # check if the value is another dictionary
-            print("\t" * depth + key)           # if true, print the parent key with the respective indentation (hierarchy) according to the depth variable 
-            displayAllTabs(value, depth + 1)    # call the function recursively until you reach no nested dicitonaries
-        else:
-            print("\t" * depth + key)           # Print the keys of the dictionaries according to their depth level
+    for key, value in tab_dict.items():     # O(N)      # iterate over dictionary
+        if isinstance(value, dict):         # O(1)      # check if the value is another dictionary
+            print("\t" * depth + key)                   # if true, print the parent key with the respective indentation (hierarchy) according to the depth variable 
+            displayAllTabs(value, depth + 1)            # call the function recursively until you reach no nested dicitonaries
+        else:                               # O(1)
+            print("\t" * depth + key)                   # Print the keys of the dictionaries according to their depth level
    
 
 # This function enables users to create nested tab by choosing the index
 # We are looping to find the desired index and inserting a dictionary on that specific index
 # We added the 'parent_url' key in the newly added nested dictionary not to lose the url of the parent website
-# Running Time: __
+# Time Complexity of whole function: O(N)   - Time mainly depends on the number of times we are iterating over the dictionary
 def openNestedTab(index, title, url, tab_dict):
     
     # Validate user input
-    while not ((validators.url(url) == True) and (title.isalpha()) and (index.isalpha())):
+    while not ((validators.url(url) == True) and (title.isalpha()) and (index.isalpha())):    # O(1)
         print("tab index or website title or url are wrong")
         index = input("Please enter the index of the tab you wish to nest: ")
         title = input("Enter the website title: ")
         url = input("Enter the website url: ")
     
-    # Making a copy of dicitionary
-    copy_of_tab_dict = tab_dict.copy()
     
-    for key, value in copy_of_tab_dict.items():
-        if key == index:
-            tab_dict[index] = {
+    # Time complexity of the below is O(N) since they are not nested so we don't multiply
+    # Making a copy of dicitionary
+    copy_of_tab_dict = tab_dict.copy()     # O(N)
+    
+    for key, value in copy_of_tab_dict.items():   # O(N)
+        if key == index:      # O(1)
+            tab_dict[index] = {       # O(1)
                 "parent_url" : value,
                 title : url,
                 }
@@ -147,63 +149,64 @@ def openNestedTab(index, title, url, tab_dict):
 
 
 # Delete of dictionary fields recursively
-# Running Time: __
+# Time Complexity of whole function: O(N)  - Time mainly depends on the size of the dictionary we deleting consisting of N elements 
 def clearAllTabs(tab_dict):
     
     # Making a copy of dicitionary
-    copy_of_tab_dict = tab_dict.copy()
+    copy_of_tab_dict = tab_dict.copy()      # O(N)
     
-    for key, value in copy_of_tab_dict.items():
-        if isinstance(value, dict):
+    for key, value in copy_of_tab_dict.items():     # O(N)
+        if isinstance(value, dict):       # O(1)
             del tab_dict[key]
             clearAllTabs(value)
-        else:
+        else:                             # O(1)
             del tab_dict[key]
 
     return tab_dict
 
 
 # Function to save open tabs information in a json file
-# Running Time: __ 
+# Time Complexity of whole function: O(N)  - Time mainly depends on the size of the dictionary we are saving which is N elements
 def saveTabs(p, tab_dict):
     
-    if p == "":
+    if p == "":   # O(1)
         # Get current working directory
         directory = os.getcwd()
         new_path = f"{directory}\\savedOpenTabs.json"  # since the user didn't enter a path then we should automatically store the content in the current working directory and give the file a name by default
-        with open(new_path, "w") as f:
+        with open(new_path, "w") as f:    # O(N)
             json.dump(tab_dict, f)
     else:
         
         # Validate user input
-        if not path.exists(p):
+        if not path.exists(p):    # O(1)
             print("File path wrong...")
             p = input("Please enter a file path to load tabs: ")
         
         file_path = p
         
-        with open(file_path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
+        with open(file_path, "w") as f:   # O(N)  # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
             json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
         
 
 # Function to load tabs information
-# Running Time: __ 
+# Time Complexity of whole function: O(N^2) 
 def importTabs(p, tab_dict):
     
     # Validate user input
-    while not path.exists(p):
+    while not path.exists(p):  # O(1)
         print("File path wrong...")
         p = input("Please enter a file path to load tabs: ")
     
-    file_path = p
+    file_path = p    # O(1)
     
+    # Time compelxity of the below is O(N^2) since the for loop is nested withing the file open
     # Open json file
-    with open(file_path) as f:
+    with open(file_path) as f:    # O(N)
         data = json.load(f)      # Load data from json file
 
         print("Loading Dictionary: ")
         
-        for key, value in data.items():         
+        for key, value in data.items():      # O(N)     
                 tab_dict[key] = value     
         
     return tab_dict
@@ -216,7 +219,7 @@ def importTabs(p, tab_dict):
 
 def main():
     # Prompt the user to enter their name and greet them
-    # Running Time: O(1)
+    # Time Complexity: O(1)
     user_name = input("Enter your name: ")
     while not user_name.isalpha():
         print("Please enter your name correctly")
@@ -224,11 +227,11 @@ def main():
     print(f"Welcome to our Advanced Browser {user_name}")
     
     # Display Menu
-    # Running Time: O(1)
+    # Time Complexity: O(1)
     displayMenu()
     
     # Take user choice 
-    # Running Time: O(1)
+    # Time Complexity: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
     
     
