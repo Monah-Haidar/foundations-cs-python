@@ -214,8 +214,11 @@ def importTabs(p, tab_dict):
 def main():
     # Prompt the user to enter their name and greet them
     # Running Time: O(1)
-    # user_name = input("Enter your name: ")
-    # print(f"Welcome to our Advanced Browser {user_name}")
+    user_name = input("Enter your name: ")
+    while not user_name.isalpha():
+        print("Please enter your name correctly")
+        user_name = input("Enter your name: ")
+    print(f"Welcome to our Advanced Browser {user_name}")
     
     # Display Menu
     # Running Time: O(1)
@@ -226,13 +229,7 @@ def main():
     user_input = int(input("Please choose a number from the menu above: "))
     
     # Dictionary to store tabs
-    tab_dict = {
-        'sef': 'https://www.activestate.com/',
-        'net': 'https://www.google.com/',
-        "ama" : {
-            "Emil" : "2004",
-            }
-        }
+    tab_dict = {}
 
     
     while user_input != 9:
