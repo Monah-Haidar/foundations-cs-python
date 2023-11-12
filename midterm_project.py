@@ -166,7 +166,7 @@ def clearAllTabs(tab_dict):
 # Running Time: __ 
 def saveTabs(p, tab_dict):
     
-    if path == "":
+    if p == "":
         # Get current working directory
         directory = os.getcwd()
         new_path = f"{directory}\\savedOpenTabs.json"
@@ -174,7 +174,7 @@ def saveTabs(p, tab_dict):
             json.dump(tab_dict, f)
     else:
         
-        while not path.exists(p):
+        if not path.exists(p):
             print("File path wrong...")
             p = input("Please enter a file path to load tabs: ")
         
@@ -297,12 +297,7 @@ def main():
         
         
         
-        
-        
-        
-        
-        
-        
+    
         
 main()
 
