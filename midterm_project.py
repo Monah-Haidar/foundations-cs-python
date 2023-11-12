@@ -29,6 +29,7 @@ def displayMenu():
 # Running Time: __
 def openTab(url, title, tab_dict):
     
+    # Validate user input
     while not ((validators.url(url) == True) and (title.isalpha())):
         print("Please enter website title or url correctly")
         title = input("Enter the website title: ")
@@ -44,7 +45,7 @@ def openTab(url, title, tab_dict):
 # Running Time: __
 def closeTab(index, tab_dict):
 
-    
+    # Validate user input
     while not ((index.isalpha()) or (index == "")):
         print("Please enter characters or leave it empty to close the last tab")
         index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
@@ -106,26 +107,26 @@ def switchTab(index, tab_dict):
     driver.quit()
 
 
-# Displaying all titles in the dictionary using pre-order traversal 
-# Pre-order traversal is a type of tree traversal that prints the parent node before its children according to to depth
+# Displaying all titles in the dictionary using depth-order traversal 
+# depth-order traversal is a type of tree traversal that prints the parent node before its children according to depth
 # Running Time: __
 def displayAllTabs(tab_dict, depth = 0):
     
     for key, value in tab_dict.items():         # iterate over dictionary
-
         if isinstance(value, dict):             # check if the value is another dictionary
             print("\t" * depth + key)           # if true, print the parent key with the respective indentation (hierarchy) according to the depth variable 
-            displayAllTabs(value, depth + 1)      # call the function recursively until you reach no nested dicitonaries
+            displayAllTabs(value, depth + 1)    # call the function recursively until you reach no nested dicitonaries
         else:
             print("\t" * depth + key)           # Print the keys of the dictionaries according to their depth level
    
 
 # This function enables users to create nested tab by choosing the index
 # We are looping to find the desired index and inserting a dictionary on that specific index
-# We added the 'parent_url' key in the newly added nested dictionary to not lose the url of the parent website
+# We added the 'parent_url' key in the newly added nested dictionary not to lose the url of the parent website
 # Running Time: __
 def openNestedTab(index, title, url, tab_dict):
     
+    # Validate user input
     while not ((validators.url(url) == True) and (title.isalpha()) and (index.isalpha())):
         print("tab index or website title or url are wrong")
         index = input("Please enter the index of the tab you wish to nest: ")
@@ -162,19 +163,19 @@ def clearAllTabs(tab_dict):
     return tab_dict
 
 
-# Function to save open tabs information
-# Json should be imported as shown above
+# Function to save open tabs information in a json file
 # Running Time: __ 
 def saveTabs(p, tab_dict):
     
     if p == "":
         # Get current working directory
         directory = os.getcwd()
-        new_path = f"{directory}\\savedOpenTabs.json"
+        new_path = f"{directory}\\savedOpenTabs.json"  # since the user didn't enter a path then we should automatically store the content in the current working directory and give the file a name by default
         with open(new_path, "w") as f:
             json.dump(tab_dict, f)
     else:
         
+        # Validate user input
         if not path.exists(p):
             print("File path wrong...")
             p = input("Please enter a file path to load tabs: ")
@@ -189,6 +190,7 @@ def saveTabs(p, tab_dict):
 # Running Time: __ 
 def importTabs(p, tab_dict):
     
+    # Validate user input
     while not path.exists(p):
         print("File path wrong...")
         p = input("Please enter a file path to load tabs: ")
