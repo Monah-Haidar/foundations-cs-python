@@ -234,14 +234,8 @@ def main():
     
     
     # Dictionary to store tabs
-    #tab_dict = {}
-    tab_dict = {
-        'sef': 'https://www.activestate.com/',
-        'go': 'https://www.google.com/',
-        "ama" : {
-            "goo" : "https://www.google.com/",
-            }
-        }
+    tab_dict = {}
+
     
     while user_input != 9:
         
