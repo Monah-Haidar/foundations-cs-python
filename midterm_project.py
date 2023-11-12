@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 import json
 import os
+import os.path
+from os import path
 import validators
 
 
@@ -162,7 +164,7 @@ def clearAllTabs(tab_dict):
 # Function to save open tabs information
 # Json should be imported as shown above
 # Running Time: __ 
-def saveTabs(path, tab_dict):
+def saveTabs(p, tab_dict):
     
     if path == "":
         # Get current working directory
@@ -171,16 +173,29 @@ def saveTabs(path, tab_dict):
         with open(new_path, "w") as f:
             json.dump(tab_dict, f)
     else:
-        with open(path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
+        
+        while not path.exists(p):
+            print("File path wrong...")
+            p = input("Please enter a file path to load tabs: ")
+        
+        file_path = p
+        
+        with open(file_path, "w") as f:     # used to work with text files. takes 2 parameters - the path and the mod as to which we need to write(w), read(r), append(a), or create(x)
             json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
         
 
 # Function to load tabs information
 # Running Time: __ 
-def importTabs(path, tab_dict):
+def importTabs(p, tab_dict):
+    
+    while not path.exists(p):
+        print("File path wrong...")
+        p = input("Please enter a file path to load tabs: ")
+    
+    file_path = p
     
     # Open json file
-    with open(path) as f:
+    with open(file_path) as f:
         data = json.load(f)      # Load data from json file
 
         print("Loading Dictionary: ")
@@ -263,11 +278,12 @@ def main():
         
         elif user_input == 7:
             file_path = input("Please enter a file path to save the current state of open tabs: ")
+            
             saveTabs(file_path, tab_dict)
         
         elif user_input == 8:
-            #file_path = input("Please enter a file path to load tabs: ")
-            file_path = r"C:\Users\User\Desktop\Test\savedOpenTabs.json"
+            file_path = input("Please enter a file path to load tabs: ")
+                
             print(importTabs(file_path, tab_dict))
         
         elif user_input != 9:
