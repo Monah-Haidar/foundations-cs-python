@@ -123,6 +123,12 @@ def displayAllTabs(tab_dict, depth = 0):
 # Running Time: __
 def openNestedTab(index, title, url, tab_dict):
     
+    while not ((validators.url(url) == True) and (title.isalpha()) and (index.isalpha())):
+        print("tab index or website title or url are wrong")
+        index = input("Please enter the index of the tab you wish to nest: ")
+        title = input("Enter the website title: ")
+        url = input("Enter the website url: ")
+    
     # Making a copy of dicitionary
     copy_of_tab_dict = tab_dict.copy()
     
@@ -249,14 +255,8 @@ def main():
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
-            while not (validators.url(website_url) == True) and (website_title.isalpha()) and (tab_index.isalpha()):
-                print("Please enter tab index or website title or url correctly")
-                tab_index = input("Please enter the index of the tab you wish to nest: ")
-                website_title = input("Enter the website title: ")
-                website_url = input("Enter the website url: ")
+            print(openNestedTab(tab_index, website_title, website_url, tab_dict))
             
-            print(tab_dict)
-            openNestedTab(tab_index, website_title, website_url, tab_dict)
         
         elif user_input == 6:
             print(clearAllTabs(tab_dict))
