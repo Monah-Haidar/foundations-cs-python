@@ -169,10 +169,19 @@ def saveTabs(path, tab_dict):
             json.dump(tab_dict, f)     # We are using the write mode because we should overwrite the content of the file if it exists and if it doesn't exist we should create it
         
 
+# Function to load tabs information
+# Running Time: __ 
+def importTabs(path, tab_dict):
+    
+    # Open json file
+    with open(path) as f:
+        data = json.load(f)      # Load data from json file
 
-
-
-
+        print("Printing Dictionary: ")
+        
+        for key, value in data.items():         
+                tab_dict[key] = value     
+        
 
 
 
@@ -243,6 +252,14 @@ def main():
         elif user_input == 7:
             file_path = input("Please enter a file path to save the current state of open tabs: ")
             saveTabs(file_path, tab_dict)
+        
+        elif user_input == 8:
+            #file_path = input("Please enter a file path to load tabs: ")
+            file_path = r"C:\Users\User\Desktop\Test\savedOpenTabs.json"
+            importTabs(file_path, tab_dict)
+        
+        elif user_input != 9:
+            print("Your choice is invalid. Please try again")
         
         
         
