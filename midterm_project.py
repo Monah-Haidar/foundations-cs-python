@@ -26,6 +26,12 @@ def displayMenu():
 # A dictionary is used to represent each tab using the title and url provided considering the title as a key and the url as a value. 
 # Running Time: __
 def openTab(url, title, tab_dict):
+    
+    while not ((validators.url(url) == True) and (title.isalpha())):
+        print("Please enter website title or url correctly")
+        title = input("Enter the website title: ")
+        url = input("Enter the website url: ")
+    
     tab_dict[title]= url
     
     return tab_dict
@@ -35,6 +41,12 @@ def openTab(url, title, tab_dict):
 # The funciton checks if the user provided an empty string or a valid index and closes the tab.
 # Running Time: __
 def closeTab(index, tab_dict):
+    
+    while not ((index.isalpha()) or (index == "")):
+        print("Please enter characters or leave it empty to close the last tab")
+        index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+    
+    
     # string is empty
     if not index:
         tab_dict.popitem()
@@ -53,7 +65,7 @@ def closeTab(index, tab_dict):
 
 
 
-# Function to close a tab
+# Function to display the content of a tab
 # Running Time: __
 def switchTab(index, tab_dict):
     # Setting up Selenium for webscraping
@@ -77,18 +89,6 @@ def switchTab(index, tab_dict):
     
     # Navigate to a webpage using the .get() method
     driver.get(url)
-
-    # Requesting the HTML source code of the website
-    html = driver.page_source
-    
-    # Wait for the website to load
-    time.sleep(2)
-    
-    # Print html source code
-    print(html)
-
-    # End session
-    driver.quit()
 
     # Requesting the HTML source code of the website
     html = driver.page_source
@@ -207,7 +207,7 @@ def main():
     # Dictionary to store tabs
     tab_dict = {
         'sef': 'https://www.activestate.com/',
-        'net': 'https://www.selenium.dev/documentation/',
+        'net': 'https://www.google.com/',
         "ama" : {
             "Emil" : "2004",
             }
@@ -220,26 +220,22 @@ def main():
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
-            while not ((validators.url(website_url) == True) and (website_title.isalpha())):
-                print("Please enter website title or url correctly")
-                website_title = input("Enter the website title: ")
-                website_url = input("Enter the website url: ")
-            
             print(openTab(website_url, website_title, tab_dict))
             
         
         elif user_input == 2:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
-            while not ((tab_index.isalpha()) or (tab_index == "")):
-                print("Please enter characters or leave it empty to close the last tab")
-                tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
-                
+            
             print(closeTab(tab_index, tab_dict))
         
         elif user_input == 3:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to display it's content: ")
+            
+            while not ((tab_index.isalpha()) or (tab_index == "")):
+                print("Please enter characters or leave it empty to close the last tab")
+                tab_index = input("Please enter the index of the tab you wish to display it's content: ")
             
             switchTab(tab_index, tab_dict)
             
@@ -248,10 +244,18 @@ def main():
         
         elif user_input == 5:
             print(tab_dict)
+            
             tab_index = input("Please enter the index of the tab you wish to nest: ")
             website_title = input("Enter the website title: ")
             website_url = input("Enter the website url: ")
             
+            while not (validators.url(website_url) == True) and (website_title.isalpha()) and (tab_index.isalpha()):
+                print("Please enter tab index or website title or url correctly")
+                tab_index = input("Please enter the index of the tab you wish to nest: ")
+                website_title = input("Enter the website title: ")
+                website_url = input("Enter the website url: ")
+            
+            print(tab_dict)
             openNestedTab(tab_index, website_title, website_url, tab_dict)
         
         elif user_input == 6:
