@@ -43,6 +43,7 @@ def openTab(url, title, tab_dict):
 # The funciton checks if the user provided an empty string or a valid index and closes the tab.
 # Running Time: __
 def closeTab(index, tab_dict):
+
     
     while not ((index.isalpha()) or (index == "")):
         print("Please enter characters or leave it empty to close the last tab")
@@ -228,6 +229,8 @@ def main():
     # Running Time: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
     
+    
+    
     # Dictionary to store tabs
     tab_dict = {}
 
@@ -243,31 +246,51 @@ def main():
         
         elif user_input == 2:
             print(tab_dict)
-            tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
             
-            print(closeTab(tab_index, tab_dict))
+            if tab_dict == {}:
+                print("No open tabs")
+                
+            else:
+                tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+            
+                print(closeTab(tab_index, tab_dict))
         
         elif user_input == 3:
             print(tab_dict)
-            tab_index = input("Please enter the index of the tab you wish to display it's content: ")
             
-            while not ((tab_index.isalpha()) or (tab_index == "")):
-                print("Please enter characters or leave it empty to close the last tab")
+            if tab_dict == {}:
+                print("No open tabs")
+                
+            else:
                 tab_index = input("Please enter the index of the tab you wish to display it's content: ")
             
-            switchTab(tab_index, tab_dict)
+                while not ((tab_index.isalpha()) or (tab_index == "")):
+                    print("Please enter characters or leave it empty to close the last tab")
+                    tab_index = input("Please enter the index of the tab you wish to display it's content: ")
+            
+                switchTab(tab_index, tab_dict)
             
         elif user_input == 4:
-            displayAllTabs(tab_dict)
+            
+            if tab_dict == {}:
+                print("No open tabs")
+                
+            else:
+                displayAllTabs(tab_dict)
         
         elif user_input == 5:
             print(tab_dict)
             
-            tab_index = input("Please enter the index of the tab you wish to nest: ")
-            website_title = input("Enter the website title: ")
-            website_url = input("Enter the website url: ")
+            if tab_dict == {}:
+                print("No open tabs")
+                
+            else:
             
-            print(openNestedTab(tab_index, website_title, website_url, tab_dict))
+                tab_index = input("Please enter the index of the tab you wish to nest: ")
+                website_title = input("Enter the website title: ")
+                website_url = input("Enter the website url: ")
+            
+                print(openNestedTab(tab_index, website_title, website_url, tab_dict))
             
         
         elif user_input == 6:
