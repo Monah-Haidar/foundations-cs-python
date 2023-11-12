@@ -231,7 +231,10 @@ def main():
         elif user_input == 2:
             print(tab_dict)
             tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
-            
+            while not ((tab_index.isalpha()) or (tab_index == "")):
+                print("Please enter characters or leave it empty to close the last tab")
+                tab_index = input("Please enter the index of the tab you wish to close or leave it empty to close the last tab: ")
+                
             print(closeTab(tab_index, tab_dict))
         
         elif user_input == 3:
