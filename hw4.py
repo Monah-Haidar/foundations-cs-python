@@ -28,6 +28,9 @@ def main():
     # Time Complexity: O(1)
     displayMenu()
     
+    # Take user choice 
+    # Time Complexity: O(1)
+    user_input = int(input("Please choose a number from the menu above: "))
     
     
     
