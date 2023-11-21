@@ -32,6 +32,20 @@ def main():
     # Time Complexity: O(1)
     user_input = int(input("Please choose a number from the menu above: "))
     
+    while user_input != 6:
+        if user_input == 1:
+            print()
+    
+    
+    
+    
+    
+    
+    
+        displayMenu()
+        user_input = int(input("Please choose a number from the menu above: "))
+    
+    
     
     
     
