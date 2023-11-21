@@ -1,3 +1,12 @@
+def displayMenu():
+    print("""
+          1. Singly Linked List
+          2. Check if Palindrome
+          3. Priority Queue
+          4. Evaluate an Infix Expression
+          5. Graph
+          6. Exit
+          """)
 
 
 
@@ -15,7 +24,10 @@ def main():
         user_name = input("Enter your name: ")
     print(f"Welcome {user_name}")
     
-
+    # Display Menu
+    # Time Complexity: O(1)
+    displayMenu()
+    
     
     
     
