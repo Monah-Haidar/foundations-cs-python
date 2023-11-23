@@ -59,7 +59,25 @@ class LinkedList:
             current_node.next = new_node
             
             self.size += 1
+        
+        else:
+            # Add search for indexed node and add it in its place 
+            
+            # variable that keeps track of node index
+            pos = 0 
     
+            while not (current_node == None and pos+1 == index):
+                # increment pos and current_node until we reach the node before the specified index or we reach end of list (current_node == None)
+                pos+=1
+                current_node = current_node.next
+                
+            if current_node != None:
+                # Add node
+                new_node.next = current_node.next    # assign the pointer of the new node to the pointer of the current node (the node we want to insert the new node in) 
+                current_node.next = new_node         # assign the pointer the current node to the newly added node
+                
+            else:
+                print("Index not available")
     
     # def diplayNodes():
 
@@ -96,11 +114,13 @@ def main():
             
             if user_choice == "a":
                 n = input("Enter a numerical value to add to the linked list: ")
-                while not n.isnumeric():
-                    n = input("Please enter a number: ")
+                i = input("Enter the index you wish to insert the node in: ")
+                while not (n.isnumeric() and i.isnumeric()):
+                    n = input("Enter a number: ")
+                    i = input("Enter a corrent index: ")
                 
                 ll = LinkedList()
-                ll.addNode(n)
+                ll.addNode(n, i)
             
             elif user_choice == "b":
                 print()
