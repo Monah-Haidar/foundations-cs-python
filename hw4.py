@@ -92,10 +92,21 @@ class LinkedList:
                 # Increment current_node because its a while loop
                 current_node = current_node.next
 
-    # def deleteNode(self):
+    def deleteNode(self, v):
 
+        if self.size == 0:
+            print("Linked List is Empty")
+            
+        elif self.size == 1:
+            self.head = None
+            
+        else:
+            current_node = self.head
+            
+            while (current_node != None and current_node.next.info != v):
+                current_node = current_node.next
 
-
+            current_node.next = current_node.next.next
 
 
 def main():
@@ -138,14 +149,17 @@ def main():
                 ll.displayNodes()
                 
                 
-                
             elif user_choice == "c":
+                value = input("Enter the value you wish to delete: ")
+                while not value.isnumeric():
+                    value = input("Enter a number: ")
+                    
                 ll = LinkedList()
-                # deleteNode()
+                ll.deleteNode(value)
             
             elif user_choice == "d":
-                print()
-                # Return to main menu
+                print("Returning to main menu")
+
     
     
     
