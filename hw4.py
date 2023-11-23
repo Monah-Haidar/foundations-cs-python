@@ -30,19 +30,36 @@ class LinkedList:
     
     def addNode(self, data, index):
         new_node = Node(data)
-        current_node = self.head
         
         if index == 0:
             # Insertion happens at the begining of the linked list
             if self.head is None:
                 # List is empty
                 self.head = new_node
+                self.size += 1
                 
             else:
                 # List is not empty
                 new_node.next = self.head    # new node points to head
                 self.head = new_node         # head became the new node
-        
+                self.size += 1
+                
+        elif index == (self.size - 1):
+            # Insert node end of linked list
+            
+            # set current node to head
+            current_node = self.head
+            
+            # iterate over linked list to find the last node
+            while current_node.next:
+                current_node = current_node.next
+                
+            # Current node is the last node , current node .next points to None 
+            # Therefore, current_node.next points to the newly added node which in turn will point to None
+            current_node.next = new_node
+            
+            self.size += 1
+    
     
     # def diplayNodes():
 
