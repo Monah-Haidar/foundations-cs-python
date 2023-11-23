@@ -17,6 +17,11 @@ def displayLinkedListMenu():
           d. Return to main menu
           """)
 
+class Node:
+    def __init__(self, info):
+        self.info = info
+        self.next  = None
+        
 
 
 
@@ -45,8 +50,12 @@ def main():
             while not (user_choice.isalpha() and len(user_choice) == 1):
                 user_choice = input("Please enter a character: ")
             
-            
-    
+            if user_choice == "a":
+                n = input("Enter a numerical value to add to the linked list: ")
+                while not n.isnumeric():
+                    n = input("Please enter a number: ")
+                
+                
     
     
     
