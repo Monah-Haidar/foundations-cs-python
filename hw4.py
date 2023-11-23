@@ -75,13 +75,24 @@ class LinkedList:
                 # Add node
                 new_node.next = current_node.next    # assign the pointer of the new node to the pointer of the current node (the node we want to insert the new node in) 
                 current_node.next = new_node         # assign the pointer the current node to the newly added node
+                self.size +=1
                 
             else:
                 print("Index not available")
     
-    # def diplayNodes():
+    
+    def displayNodes(self):
+        # Iterate of the nodes of the linked list and display their values
+        if self.size == 0:
+            print("List is empty")
+        else:
+            current_node = self.head
+            while current_node.next != None:
+                print(current_node.info)
+                # Increment current_node because its a while loop
+                current_node = current_node.next
 
-    # def deleteNode():
+    # def deleteNode(self):
 
 
 
@@ -123,11 +134,13 @@ def main():
                 ll.addNode(n, i)
             
             elif user_choice == "b":
-                print()
-                # diplayNodes()
+                ll = LinkedList()
+                ll.displayNodes()
+                
+                
                 
             elif user_choice == "c":
-                print()
+                ll = LinkedList()
                 # deleteNode()
             
             elif user_choice == "d":
