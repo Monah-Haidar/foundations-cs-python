@@ -41,9 +41,11 @@ def main():
     while user_input != 6:
         if user_input == 1:
             displayLinkedListMenu()
-    
-    
-    
+            user_choice = input("Please choose an option from the menu above: ")
+            while not (user_choice.isalpha() and len(user_choice) == 1):
+                user_choice = input("Please enter a character: ")
+            
+            
     
     
     
