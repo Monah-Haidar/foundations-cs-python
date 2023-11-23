@@ -23,6 +23,33 @@ class Node:
         self.next  = None
         
 
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.size = 0
+    
+    def addNode(self, data, index):
+        new_node = Node(data)
+        current_node = self.head
+        
+        if index == 0:
+            # Insertion happens at the begining of the linked list
+            if self.head is None:
+                # List is empty
+                self.head = new_node
+                
+            else:
+                # List is not empty
+                new_node.next = self.head    # new node points to head
+                self.head = new_node         # head became the new node
+        
+    
+    # def diplayNodes():
+
+    # def deleteNode():
+
+
+
 
 
 def main():
@@ -55,7 +82,20 @@ def main():
                 while not n.isnumeric():
                     n = input("Please enter a number: ")
                 
+                ll = LinkedList()
+                ll.addNode(n)
+            
+            elif user_choice == "b":
+                print()
+                # diplayNodes()
                 
+            elif user_choice == "c":
+                print()
+                # deleteNode()
+            
+            elif user_choice == "d":
+                print()
+                # Return to main menu
     
     
     
