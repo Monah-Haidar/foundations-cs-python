@@ -9,7 +9,13 @@ def displayMenu():
           """)
 
 
-
+def displayLinkedListMenu():
+    print("""
+          a. Add Node
+          b. Display Nodes
+          c. Search for & Delete Node
+          d. Return to main menu
+          """)
 
 
 
@@ -17,12 +23,12 @@ def displayMenu():
 def main():
     # Prompt the user to enter their name and greet them
     # Time Complexity: O(1)
-    user_name = input("Enter your name: ")
+    # user_name = input("Enter your name: ")
     
-    while not user_name.isalpha():
-        print("Please enter your name correctly")
-        user_name = input("Enter your name: ")
-    print(f"Welcome {user_name}")
+    # while not user_name.isalpha():
+    #     print("Please enter your name correctly")
+    #     user_name = input("Enter your name: ")
+    # print(f"Welcome {user_name}")
     
     # Display Menu
     # Time Complexity: O(1)
@@ -34,7 +40,7 @@ def main():
     
     while user_input != 6:
         if user_input == 1:
-            print()
+            displayLinkedListMenu()
     
     
     
